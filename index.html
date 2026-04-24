@@ -1,1 +1,77 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>The Beans Family</title></head><body><h1>Test</h1></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Beans Family - Animated Songs for Kids</title>
+<style>
+:root { --bg: #fff8ec; --ink: #2a1d0f; --accent: #e89422; --accent-dark: #b46f14; --card: #ffffff; --muted: #6b5a47; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
+header { background: linear-gradient(135deg, #fff3d1, #ffe2a8); padding: 2.5rem 1.5rem 1.5rem; text-align: center; border-bottom: 3px solid var(--accent); }
+header img { max-width: 280px; width: 100%; height: auto; display: block; margin: 0 auto 1rem; }
+header h1 { margin: 0; font-size: 2.2rem; color: var(--accent-dark); }
+header p.tag { margin: 0.5rem 0 0; font-size: 1.1rem; color: var(--muted); }
+nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem; background: var(--card); padding: 0.75rem; position: sticky; top: 0; box-shadow: 0 2px 4px rgba(0,0,0,0.05); z-index: 10; }
+nav button { background: transparent; border: 2px solid transparent; padding: 0.5rem 1.25rem; font-size: 1rem; font-weight: 600; color: var(--muted); cursor: pointer; border-radius: 999px; transition: all 0.2s; }
+nav button:hover { color: var(--accent-dark); }
+nav button.active { background: var(--accent); color: white; }
+main { max-width: 760px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+section { display: none; }
+section.active { display: block; }
+section h2 { color: var(--accent-dark); margin-top: 0; }
+.step { background: var(--card); border-left: 4px solid var(--accent); padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.step strong { color: var(--accent-dark); }
+.social-card { background: var(--card); padding: 2rem; border-radius: 12px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-top: 1.5rem; }
+.social-card a { display: inline-block; background: #ff0000; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 1rem; }
+.social-card .coming-soon { font-size: 0.9rem; color: var(--muted); margin-top: 0.75rem; }
+footer { text-align: center; padding: 1.5rem; color: var(--muted); font-size: 0.9rem; }
+</style>
+</head>
+<body>
+<header>
+<img src="images/logo.webp" alt="The Beans Family logo">
+<h1>The Beans Family</h1>
+<p class="tag">Animated songs for kids</p>
+</header>
+<nav>
+<button class="tab-btn active" data-tab="home">Home</button>
+<button class="tab-btn" data-tab="how">How It Works</button>
+<button class="tab-btn" data-tab="social">Social</button>
+</nav>
+<main>
+<section id="home" class="active">
+<h2>Welcome to The Beans Family</h2>
+<p>We make animated songs for kids. Every episode starts with an idea, grows into a song, and ends up as an animated short you can sing along to.</p>
+<p>Curious how a song goes from a seed of an idea to a finished video? Check out the <a href="#" class="link-to-how">How It Works</a> tab.</p>
+</section>
+<section id="how">
+<h2>How It Works</h2>
+<p>Every song we release goes through the same loving process:</p>
+<div class="step"><strong>1. Human + AI write the song together.</strong> A person and an AI collaborate on the lyrics and musical direction, trading ideas until the song has a heart.</div>
+<div class="step"><strong>2. Many generations in Suno.</strong> The song is generated in Suno, over and over. We keep iterating until one of the generations hits home perfectly. No shortcuts.</div>
+<div class="step"><strong>3. Animation in Blender.</strong> The Suno song gets dropped into a tool like Blender and gets animated to match the music.</div>
+<div class="step"><strong>4. Final human editing pass.</strong> A human does one more pass to make sure every beat hits just right, every cut lands, and the whole thing feels alive.</div>
+</section>
+<section id="social">
+<h2>Follow Us</h2>
+<div class="social-card">
+<p>Our channel is on the way.</p>
+<a href="#" target="_blank" rel="noopener">YouTube Channel</a>
+<p class="coming-soon">Coming soon</p>
+</div>
+</section>
+</main>
+<footer>&copy; The Beans Family</footer>
+<script>
+const buttons = document.querySelectorAll(".tab-btn");
+const sections = document.querySelectorAll("main > section");
+function show(tab) {
+  buttons.forEach(function(b) { b.classList.toggle("active", b.dataset.tab === tab); });
+  sections.forEach(function(s) { s.classList.toggle("active", s.id === tab); });
+}
+buttons.forEach(function(b) { b.addEventListener("click", function() { show(b.dataset.tab); }); });
+document.querySelectorAll(".link-to-how").forEach(function(a) { a.addEventListener("click", function(e) { e.preventDefault(); show("how"); }); });
+</script>
+</body>
+</html>
